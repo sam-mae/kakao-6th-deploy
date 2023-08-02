@@ -59,9 +59,9 @@ public class CartService {
 
     public CartResponse.FindAllDTO findAll(User user) {
         List<Cart> cartList = cartJPARepository.findByUserIdOrderByOptionIdAsc(user.getId());
-        if (cartList.isEmpty()) {
-            throw new Exception404("장바구니에 담은 상품이 없습니다.");
-        }
+        //if (cartList.isEmpty()) {
+          //  throw new Exception404("장바구니에 담은 상품이 없습니다.");
+        //}
         // Cart에 담긴 옵션이 3개이면, 2개는 바나나 상품, 1개는 딸기 상품이면 Product는 2개인 것이다.
         return new CartResponse.FindAllDTO(cartList);
     }
