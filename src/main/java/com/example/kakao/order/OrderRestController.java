@@ -19,11 +19,18 @@ public class OrderRestController {
 
     // (기능9) 결재하기 - (주문 인서트) POST
     // /orders/save
+    /*
     @PostMapping("/orders/save")
     public ResponseEntity<?> save(@AuthenticationPrincipal CustomUserDetails userDetails) {
         orderService.save(userDetails.getUser());
         ApiUtils.ApiResult<?> apiResult = ApiUtils.success(null);
         return ResponseEntity.ok(apiResult);
+    }
+    */
+    @PostMapping("/orders/save")
+    public ResponseEntity<?> save(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        OrderResponse.FindByIdDTO responseDTO = orderService.save(userDetails.getUser());
+        return ResponseEntity.ok(ApiUtils.success(responseDTO));
     }
 
     // (기능10) 주문 결과 확인 GET

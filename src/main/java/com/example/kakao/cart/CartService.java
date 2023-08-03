@@ -59,6 +59,8 @@ public class CartService {
 
     public CartResponse.FindAllDTO findAll(User user) {
         List<Cart> cartList = cartJPARepository.findByUserIdOrderByOptionIdAsc(user.getId());
+        // 프론트엔드 코드가 장바구니가 비어있으면 에러가 아니라
+        // 빈 배열로 응답하는 방식이라 에러 발생해서 주석 처리
         //if (cartList.isEmpty()) {
           //  throw new Exception404("장바구니에 담은 상품이 없습니다.");
         //}
